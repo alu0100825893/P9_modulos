@@ -6,5 +6,10 @@ describe Biblio do
             p = Biblio.new('pablo')
             p.autor.should eq('pablo')
         end
+        
+        it "Hay mas de un autor" do
+           p=Biblio.new("Pablo , Pepe , Juan")
+           p=autor.should eq("Pablo , Pepe , Juan")
+        end
     end
 end
