@@ -4,7 +4,14 @@ describe Biblio do
     describe "Autores correctos" do
         it "Hay al menos un autor almacenado" do
             p = Biblio.new("pablo")
-            p.autor.to_s.should eq("pablo")
+            p.autor.should eq("pablo")
+        end
+    end
+    
+    describe "Titulo Correcto" do
+        it "Hay un titulo almacenado" do
+            p = Biblio.new("Lenguajes y Paradigmas")
+            p.titulo.should eq("Lenguajes y Paradigmas")
         end
     end
 end
