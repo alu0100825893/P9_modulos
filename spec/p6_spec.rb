@@ -1,9 +1,9 @@
-require 'lib/p6'
+require 'p6'
 
-describe P6 do
+describe Biblio do
     describe "Autores correctos" do
         it "Hay al menos un autor almacenado" do
-            p = P6.new('pablo')
+            p = Biblio.new('pablo')
             p.autor.should eq('pablo')
         end
     end

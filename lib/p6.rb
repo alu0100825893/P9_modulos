@@ -1,5 +1,10 @@
-require "p6/version"
+#require "p6/version"
 
-module P6
-  # Your code goes here...
+class Biblio
+
+     attr_reader :autor
+     def initialize(nombre)
+         @autor = nombre
+     end
+
 end
