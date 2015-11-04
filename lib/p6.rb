@@ -14,5 +14,8 @@ class Biblio
      def titulo_poner(titulo)
           @titulo=titulo
      end
+     def get_titulo
+          @titulo
+     end
 
 end

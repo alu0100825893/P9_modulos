@@ -16,7 +16,7 @@ describe Biblio do
         it "Hay un titulo almacenado" do
             p = Biblio.new("Pablo")
             p.titulo_poner("Lenguajes y Paradigmas")
-            p.titulo.should eq("Lenguajes y Paradigmas")
+            p.get_titulo.should eq("Lenguajes y Paradigmas")
         end
     end
 end
