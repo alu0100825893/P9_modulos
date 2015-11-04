@@ -5,9 +5,9 @@ describe Biblio do
         @p = Biblio.new("pablo sebastian")
         @p.titulo_poner("Lenguajes y Paradigmas")
         @p.serie_poner("Ruby")
+        @p.editorial_poner("Santillana")
         @q = Biblio.new("pablo sebastian, oscar catari")
         @q.serie_poner("")
-        
     end
     
     describe "Autores correctos" do
@@ -31,6 +31,15 @@ describe Biblio do
         end
         it "No existe una serie" do
             @q.get_serie.should eq("")
+        end
+    end
+    
+    describe "Debe existir una editorial" do
+        it "Existe editorial" do
+            @p.get_editorial.should eq("Santillana")
+        end
+        it " No existe editorial" do
+            @q.editorial_poner("").should eq(RuntimeError)
         end
     end
     

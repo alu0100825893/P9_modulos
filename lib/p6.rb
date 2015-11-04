@@ -25,4 +25,15 @@ class Biblio
      def get_serie
           @serie
      end
+     
+     def editorial_poner(editorial)
+          @editorial = editorial
+          if (@editorial == "") 
+               return RuntimeError
+          end
+     end
+
+     def get_editorial
+          @editorial
+     end
 end
