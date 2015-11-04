@@ -36,4 +36,17 @@ class Biblio
      def get_editorial
           @editorial
      end
+     
+     def edicion_poner(edicion)
+          
+          if(edicion.is_a? Integer)
+               @edicion = edicion
+          else
+               return RuntimeError
+          end
+     end
+
+     def get_edicion
+          @edicion
+     end
 end

@@ -8,6 +8,7 @@ describe Biblio do
         @p.editorial_poner("Santillana")
         @q = Biblio.new("pablo sebastian, oscar catari")
         @q.serie_poner("")
+        @p.edicion_poner(4)
     end
     
     describe "Autores correctos" do
@@ -43,5 +44,13 @@ describe Biblio do
         end
     end
     
+     describe "Debe existir un numero de edicion." do
+        it "Existe numero edicion" do
+            @p.get_edicion.should eq(4)
+        end
+        it "No existe numero edicion" do
+            @q.edicion_poner("4").should eq(RuntimeError)
+        end
+    end
     
 end
