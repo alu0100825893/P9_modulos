@@ -60,4 +60,13 @@ class Biblio
      def get_fecha
           @fecha
      end
+     
+     def isbn_poner(isbn)
+         @isbn = []
+         @isbn.push(isbn)
+     end
+     def get_isbn
+          @isbn.join(",")
+          
+     end
 end

@@ -10,6 +10,8 @@ describe Biblio do
         @q.serie_poner("")
         @p.edicion_poner(4)
         @p.fecha_poner("july 7,2015")
+        @p.isbn_poner("ISBN-10: 1234512345")
+        @q.isbn_poner("ISBN-10: 1234512345,ISBN-13:1234512345123")
     end
     
     describe "Autores correctos" do
@@ -58,8 +60,16 @@ describe Biblio do
         it "Existe fecha de publicacion" do
             @p.get_fecha.should eq("july 7,2015")
         end
-        it "No existe fecha de publicacionn" do
+        it "No existe fecha de publicacion" do
             @q.fecha_poner("").should eq(RuntimeError)
+        end
+    end
+    describe "Debe existir uno o mas numeros ISBN" do
+        it "Existe un numero ISBN" do
+            @p.get_isbn.should eq("ISBN-10: 1234512345")
+        end
+        it "Existe varios numeros ISBN" do
+            @q.get_isbn.should eq("ISBN-10: 1234512345,ISBN-13:1234512345123")
         end
     end
 end
