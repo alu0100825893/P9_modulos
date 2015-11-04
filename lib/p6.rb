@@ -49,4 +49,15 @@ class Biblio
      def get_edicion
           @edicion
      end
+     
+     def fecha_poner(fecha)
+          @fecha = fecha
+          if (@fecha == "") 
+               return RuntimeError
+          end
+     end
+
+     def get_fecha
+          @fecha
+     end
 end

@@ -9,6 +9,7 @@ describe Biblio do
         @q = Biblio.new("pablo sebastian, oscar catari")
         @q.serie_poner("")
         @p.edicion_poner(4)
+        @p.fecha_poner("july 7,2015")
     end
     
     describe "Autores correctos" do
@@ -53,4 +54,12 @@ describe Biblio do
         end
     end
     
+    describe "Debe existir una fecha de publicacion" do
+        it "Existe fecha de publicacion" do
+            @p.get_fecha.should eq("july 7,2015")
+        end
+        it "No existe fecha de publicacionn" do
+            @q.fecha_poner("").should eq(RuntimeError)
+        end
+    end
 end
