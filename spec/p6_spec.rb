@@ -72,4 +72,9 @@ describe Biblio do
             @q.get_isbn.should eq("ISBN-10: 1234512345,ISBN-13:1234512345123")
         end
     end
+    describe "Referencia formateada" do
+        it "Formateo de la referencia" do
+            @p.formateo.should eq("pablo sebastian\nLenguajes y Paradigmas\n(Ruby)\nSantillana; 4 edition (july 7,2015)\nISBN-10: 1234512345")
+        end
+    end
 end
