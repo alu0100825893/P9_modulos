@@ -17,5 +17,12 @@ class Biblio
      def get_titulo
           @titulo
      end
+     
+     def serie_poner(serie)
+          @serie = serie
+     end
 
+     def get_serie
+          @serie
+     end
 end
