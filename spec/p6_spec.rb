@@ -3,8 +3,12 @@ require 'p6'
 describe Biblio do
     describe "Autores correctos" do
         it "Hay al menos un autor almacenado" do
-            p = Biblio.new("pablo")
-            p.autor.should eq("pablo")
+            p = Biblio.new("pablo sebastian")
+            p.get_autor.should eq("pablo sebastian")
+        end
+        it "varios autores almacenados correctamente" do
+            p = Biblio.new("pablo sebastian, oscar catari")
+            p.get_autor.should eq("pablo sebastian, oscar catari")
         end
     end
     
