@@ -23,5 +23,19 @@ describe Lista do
         end
     end
     
-    
+    context "Operaciones con lista" do
+        before :each do
+            @lista = Lista.new
+            @nodo = Nodo.new(5,nil)
+        end
+        it "Insercion de un elemento" do
+            @lista.insertar([@nodo])
+            expect(@lista.to_s).to eq("5->nil")
+        end
+        it "Insercion de varios elementos" do
+            @lista.insertar([@nodo,Nodo.new(7,nil),Nodo.new(10,nil)])
+            expect(@lista.to_s).to eq("10->7->5->nil")
+        end
+       
+    end
 end
