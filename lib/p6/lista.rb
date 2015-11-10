@@ -40,4 +40,25 @@ class Lista
                 return aux
             end
      end
+     
+     def extracion #Extrae el primer elemento de la lista
+            if (!self.vacio)
+                if (@cabeza.siguiente == nil) #Un solo elemento
+                    aux = @cabeza
+                    @cabeza = nil
+                    return aux
+                else #Dos o mas elementos
+                    ultimo = @cabeza
+                    penultimo = nil
+                    
+                    while (ultimo.siguiente != nil) do
+                        penultimo = ultimo
+                        ultimo = ultimo.siguiente
+                    end
+                    
+                    penultimo.siguiente = nil
+                    return ultimo
+                end
+            end
+      end
 end

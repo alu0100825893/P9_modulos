@@ -37,5 +37,10 @@ describe Lista do
             expect(@lista.to_s).to eq("10->7->5->nil")
         end
        
+        it "Eliminacion del primer elemento" do
+            @lista.insertar([@nodo,Nodo.new(7,nil),Nodo.new(10,nil)])
+            expect(@lista.extracion.valor).to eq(5)
+            expect(@lista.to_s).to eq("10->7->nil")
+        end
     end
 end
