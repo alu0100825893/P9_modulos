@@ -14,4 +14,14 @@ describe Lista do
         end
     end
     
+    context "Debe crearse una lista" do
+        before :each do
+            @lista = Lista.new
+        end
+        it "La lista es vacia" do
+            expect(@lista.vacio).to eq(true)
+        end
+    end
+    
+    
 end
