@@ -1,12 +1,13 @@
+require 'spec_helper'
 require 'p6'
 
-describe Biblio do
+describe P6::Biblio do
     before :each do
-        @p = Biblio.new("pablo sebastian")
+        @p = P6::Biblio.new("pablo sebastian")
         @p.titulo_poner("Lenguajes y Paradigmas")
         @p.serie_poner("Ruby")
         @p.editorial_poner("Santillana")
-        @q = Biblio.new("pablo sebastian, oscar catari")
+        @q = P6::Biblio.new("pablo sebastian, oscar catari")
         @q.serie_poner("")
         @p.edicion_poner(4)
         @p.fecha_poner("july 7,2015")
@@ -77,4 +78,5 @@ describe Biblio do
             @p.formateo.should eq("pablo sebastian\nLenguajes y Paradigmas\n(Ruby)\nSantillana; 4 edition (july 7,2015)\nISBN-10: 1234512345")
         end
     end
+    
 end
