@@ -75,6 +75,9 @@ module P6
                aux=aux<<"#{get_autor}\n#{get_titulo}\n(#{get_serie})\n#{get_editorial}; #{get_edicion} edition (#{get_fecha})\n#{get_isbn}"
         
           end
+          def to_s
+               formateo
+          end
      end
 
 end
