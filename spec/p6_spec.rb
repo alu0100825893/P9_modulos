@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'p6'
 require 'p6/libro'
+require 'p6/revista'
 
 describe P6::Biblio do
     before :each do
@@ -91,9 +92,19 @@ describe P6::Biblio do
             @libro.edicion_poner(4)
             @libro.fecha_poner("july 7,2015")
             @libro.isbn_poner("ISBN-10: 1234512345")
-            @libro.isbn_poner("ISBN-10: 1234512345")
         
             expect(@libro.to_s).to eq("Oscar Catari\nLenguajes y Paradigmas\n(Ruby)\nSantillana; 4 edition (july 7,2015)\nISBN-10: 1234512345\nColor: rojo")
+        end
+        it "Debe haber una clase revista" do
+            @revista = Revista.new("Oscar Catari",35)
+            @revista.titulo_poner("Lenguajes y Paradigmas")
+            @revista.serie_poner("Ruby")
+            @revista.editorial_poner("Santillana")
+            @revista.edicion_poner(4)
+            @revista.fecha_poner("july 7,2015")
+            @revista.isbn_poner("ISBN-10: 1234512345")
+            
+            expect(@revista.to_s).to eq("Oscar Catari\nLenguajes y Paradigmas\n(Ruby)\nSantillana; 4 edition (july 7,2015)\nISBN-10: 1234512345\nNº Paginas: 35")
         end
     end
 end
