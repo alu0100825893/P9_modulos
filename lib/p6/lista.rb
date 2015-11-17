@@ -1,9 +1,10 @@
 
 
-Nodo = Struct.new(:valor,:siguiente)
+Nodo = Struct.new(:valor,:siguiente,:anterior)
 class Lista
     def initialize 
           @cabeza = nil
+          @tail = nil
     end
 
     def vacio
@@ -18,9 +19,12 @@ class Lista
             array.each do |elemento|
                 if (self.vacio)
                     elemento.siguiente = nil
+                    elemento.anterior = nil
                     @cabeza = elemento
+                    @tail = elemento
                 else
                     elemento.siguiente = @cabeza
+                    @cabeza.anterior = elemento
                     @cabeza = elemento
                 end
             end
@@ -59,6 +63,20 @@ class Lista
                     penultimo.siguiente = nil
                     return ultimo
                 end
+            end
+      end
+      def to_s_inv
+            if (self.vacio)
+                return ""
+            else
+                aux = ""
+                iterador = @tail
+                while (iterador != nil) do
+                    aux = aux + iterador.valor.to_s + "->"
+                    iterador = iterador.anterior
+                end
+                aux = aux + "nil"
+                return aux
             end
       end
 end
