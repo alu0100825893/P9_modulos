@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'p6/lista'
+require 'p6/p6'
 
 describe Lista do
     context "Debe crearse un nodo" do
