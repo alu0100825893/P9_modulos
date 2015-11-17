@@ -2,6 +2,7 @@ require 'spec_helper'
 require 'p6'
 require 'p6/libro'
 require 'p6/revista'
+require 'p6/doc_electronico'
 
 describe P6::Biblio do
     before :each do
@@ -105,6 +106,17 @@ describe P6::Biblio do
             @revista.isbn_poner("ISBN-10: 1234512345")
             
             expect(@revista.to_s).to eq("Oscar Catari\nLenguajes y Paradigmas\n(Ruby)\nSantillana; 4 edition (july 7,2015)\nISBN-10: 1234512345\nNº Paginas: 35")
+        end
+        it "Debe haber una clase Doc_electronico" do
+            @doc_elec = Doc_electronico.new("Oscar Catari",12)
+            @doc_elec.titulo_poner("Lenguajes y Paradigmas")
+            @doc_elec.serie_poner("Ruby")
+            @doc_elec.editorial_poner("Santillana")
+            @doc_elec.edicion_poner(4)
+            @doc_elec.fecha_poner("july 7,2015")
+            @doc_elec.isbn_poner("ISBN-10: 1234512345")
+            
+            expect(@doc_elec.to_s).to eq("Oscar Catari\nLenguajes y Paradigmas\n(Ruby)\nSantillana; 4 edition (july 7,2015)\nISBN-10: 1234512345\nPrecio: 12$")
         end
     end
 end
