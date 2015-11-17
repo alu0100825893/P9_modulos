@@ -93,7 +93,9 @@ describe P6::Biblio do
             @libro.edicion_poner(4)
             @libro.fecha_poner("july 7,2015")
             @libro.isbn_poner("ISBN-10: 1234512345")
-        
+            
+            expect(@libro.is_a?P6::Biblio).to eq (true)
+            expect(@libro.respond_to?('titulo_poner')).to eq(true)
             expect(@libro.to_s).to eq("Oscar Catari\nLenguajes y Paradigmas\n(Ruby)\nSantillana; 4 edition (july 7,2015)\nISBN-10: 1234512345\nColor: rojo")
         end
         it "Debe haber una clase revista" do
@@ -105,6 +107,8 @@ describe P6::Biblio do
             @revista.fecha_poner("july 7,2015")
             @revista.isbn_poner("ISBN-10: 1234512345")
             
+            expect(@revista.is_a?P6::Biblio).to eq (true)
+            expect(@revista.respond_to?('fecha_poner')).to eq(true)
             expect(@revista.to_s).to eq("Oscar Catari\nLenguajes y Paradigmas\n(Ruby)\nSantillana; 4 edition (july 7,2015)\nISBN-10: 1234512345\nNº Paginas: 35")
         end
         it "Debe haber una clase Doc_electronico" do
@@ -116,6 +120,8 @@ describe P6::Biblio do
             @doc_elec.fecha_poner("july 7,2015")
             @doc_elec.isbn_poner("ISBN-10: 1234512345")
             
+            expect(@doc_elec.is_a?P6::Biblio).to eq (true)
+            expect(@doc_elec.respond_to?('edicion_poner')).to eq(true)
             expect(@doc_elec.to_s).to eq("Oscar Catari\nLenguajes y Paradigmas\n(Ruby)\nSantillana; 4 edition (july 7,2015)\nISBN-10: 1234512345\nPrecio: 12$")
         end
     end
