@@ -93,7 +93,7 @@ describe Lista do
             @ref.isbn_poner("ISBN-10: 1449325866,ISBN-13: 978-1449325862")
             @nodo = Nodo.new(@ref,nil)
             @lista.insertar([@nodo])
-            
+          
             expect(@lista.to_s).to eq("Richard E\nSilverman Git Pocket Guide\n()\nO’Reilly Media; 1 edition (August 2, 2013)\nISBN-10: 1449325866,ISBN-13: 978-1449325862->David Chelimsky, Dave Astels, Bryan Helmkamp, Dan North, Zach Dennis, Aslak Hellesoy\nThe RSpec Book: Behaviour Driven Development with RSpec, Cucumber, and Friends\n(The Facets of Ruby)\nPragmatic Bookshelf; 1 edition (December 25, 2010)\nISBN-10: 1934356379,ISBN-13: 978-1934356371->David Flanagan, Yukihiro Matsumoto\nThe Ruby Programming Language\n()\nO’Reilly Media; 1 edition (February 4, 2008)\nISBN-10: 0596516177,ISBN-13: 978-0596516178->Scott Chacon\nPro Git 2009th Edition\n(Pro)\nApress; 2009 edition (August 27, 2009)\nISBN-13: 978-1430218333,ISBN-10: 1430218339->Dave Thomas, Andy Hunt, Chad Fowler\nProgramming Ruby 1.9 & 2.0: The Pragmatic Programmers Guide\n(The Facets of Ruby)\nPragmatic Bookshelf; 4 edition (july 7,2013)\nISBN-13: 978-1937785499,ISBN-10: 1937785491->nil")
         end
         

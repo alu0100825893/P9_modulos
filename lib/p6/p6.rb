@@ -2,6 +2,7 @@
 module P6
      class Biblio
      
+          include Comparable
           attr_reader :autor
           attr_reader :titulo
           def initialize(nombre)
@@ -78,6 +79,46 @@ module P6
           def to_s
                formateo
           end
+          
+          def <=> other
+               get_autor <=> other.get_autor
+          end
+          
+          def == (other)
+               if (get_autor == other.get_autor)
+                    if (get_titulo == other.get_titulo)
+                         if (get_serie == other.get_serie)
+                              if (get_editorial == other.get_editorial)
+                                   if (get_edicion == other.get_edicion)
+                                        if (get_fecha == other.get_fecha)
+                                             if (get_isbn == other.get_isbn)
+                                                  return true
+                                             end
+                                        end
+                                   end
+                              end
+                         end
+                    end
+               end
+               return false
+          end
+          
+          def < (other)
+               get_edicion < other.get_edicion
+          end
+          
+          def > (other)
+               get_edicion > other.get_edicion
+          end
+          
+          def >= (other)
+               get_edicion >= other.get_edicion
+          end
+          
+          def <= (other)
+               get_edicion <= other.get_edicion
+          end
+          
      end
 
 end

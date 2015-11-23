@@ -2,7 +2,7 @@
 
 Nodo = Struct.new(:valor,:siguiente,:anterior)
 class Lista
-    def initialize 
+    def initialize
           @cabeza = nil
           @tail = nil
     end

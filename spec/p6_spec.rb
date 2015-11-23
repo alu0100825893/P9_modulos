@@ -86,7 +86,7 @@ describe P6::Biblio do
     
     context "Derivaciones de referencias bibliograficas" do
         it "Debe haber una clase libro" do
-            @libro = Libro.new("Oscar Catari","rojo")
+            @libro = Libro.new("Oscar Catari","rojo",7)
             @libro.titulo_poner("Lenguajes y Paradigmas")
             @libro.serie_poner("Ruby")
             @libro.editorial_poner("Santillana")
@@ -95,11 +95,12 @@ describe P6::Biblio do
             @libro.isbn_poner("ISBN-10: 1234512345")
             
             expect(@libro.is_a?P6::Biblio).to eq (true)
+            expect(@libro.instance_of?P6::Biblio).to eq(false)
             expect(@libro.respond_to?('titulo_poner')).to eq(true)
-            expect(@libro.to_s).to eq("Oscar Catari\nLenguajes y Paradigmas\n(Ruby)\nSantillana; 4 edition (july 7,2015)\nISBN-10: 1234512345\nColor: rojo")
+            expect(@libro.to_s).to eq("Oscar Catari\nLenguajes y Paradigmas\n(Ruby)\nSantillana; 4 edition (july 7,2015)\nISBN-10: 1234512345\nColor: rojo\nCapitulos: 7")
         end
         it "Debe haber una clase revista" do
-            @revista = Revista.new("Oscar Catari",35)
+            @revista = Revista.new("Oscar Catari",35,"A4")
             @revista.titulo_poner("Lenguajes y Paradigmas")
             @revista.serie_poner("Ruby")
             @revista.editorial_poner("Santillana")
@@ -109,10 +110,10 @@ describe P6::Biblio do
             
             expect(@revista.is_a?P6::Biblio).to eq (true)
             expect(@revista.respond_to?('fecha_poner')).to eq(true)
-            expect(@revista.to_s).to eq("Oscar Catari\nLenguajes y Paradigmas\n(Ruby)\nSantillana; 4 edition (july 7,2015)\nISBN-10: 1234512345\nNº Paginas: 35")
+            expect(@revista.to_s).to eq("Oscar Catari\nLenguajes y Paradigmas\n(Ruby)\nSantillana; 4 edition (july 7,2015)\nISBN-10: 1234512345\nNº Paginas: 35\nFormato: A4")
         end
         it "Debe haber una clase Doc_electronico" do
-            @doc_elec = Doc_electronico.new("Oscar Catari",12)
+            @doc_elec = Doc_electronico.new("Oscar Catari",12,"Google Play")
             @doc_elec.titulo_poner("Lenguajes y Paradigmas")
             @doc_elec.serie_poner("Ruby")
             @doc_elec.editorial_poner("Santillana")
@@ -122,7 +123,90 @@ describe P6::Biblio do
             
             expect(@doc_elec.is_a?P6::Biblio).to eq (true)
             expect(@doc_elec.respond_to?('edicion_poner')).to eq(true)
-            expect(@doc_elec.to_s).to eq("Oscar Catari\nLenguajes y Paradigmas\n(Ruby)\nSantillana; 4 edition (july 7,2015)\nISBN-10: 1234512345\nPrecio: 12$")
+            expect(@doc_elec.to_s).to eq("Oscar Catari\nLenguajes y Paradigmas\n(Ruby)\nSantillana; 4 edition (july 7,2015)\nISBN-10: 1234512345\nPrecio: 12$\nTienda: Google Play")
         end
+        
+    end
+    context "Comparacion entre referencias" do
+        before :each do
+            @ref1 = P6::Biblio.new("Oscar Catari")
+            @ref1.titulo_poner("Lenguajes y Paradigmas")
+            @ref1.serie_poner("Ruby")
+            @ref1.editorial_poner("Santillana")
+            @ref1.edicion_poner(4)
+            @ref1.fecha_poner("july 7,2015")
+            @ref1.isbn_poner("ISBN-10: 1234512345")
+            
+            @ref1_copia = P6::Biblio.new("Oscar Catari")
+            @ref1_copia.titulo_poner("Lenguajes y Paradigmas")
+            @ref1_copia.serie_poner("Ruby")
+            @ref1_copia.editorial_poner("Santillana")
+            @ref1_copia.edicion_poner(4)
+            @ref1_copia.fecha_poner("july 7,2015")
+            @ref1_copia.isbn_poner("ISBN-10: 1234512345")
+            
+            @ref2 = P6::Biblio.new("Oscar Catari")
+            @ref2.titulo_poner("Lenguajes y Paradigmas")
+            @ref2.serie_poner("C++") #diferencia
+            @ref2.editorial_poner("Santillana")
+            @ref2.edicion_poner(4)
+            @ref2.fecha_poner("july 7,2015")
+            @ref2.isbn_poner("ISBN-10: 1234512345")
+            
+            @libro = Libro.new("Oscar Catari","rojo",7)
+            @libro.titulo_poner("Lenguajes y Paradigmas")
+            @libro.serie_poner("Ruby")
+            @libro.editorial_poner("Santillana")
+            @libro.edicion_poner(4)
+            @libro.fecha_poner("july 7,2015")
+            @libro.isbn_poner("ISBN-10: 1234512345")
+            
+            @revista = Revista.new("Oscar Catari",35,"A4")
+            @revista.titulo_poner("Lenguajes y Paradigmas")
+            @revista.serie_poner("Ruby")
+            @revista.editorial_poner("Santillana")
+            @revista.edicion_poner(4)
+            @revista.fecha_poner("july 7,2015")
+            @revista.isbn_poner("ISBN-10: 1234512345")
+        end
+        
+        it "ref1 y ref1_copia son iguales" do
+            expect(@ref1 == @ref1_copia).to eq(true)
+        end
+        it "ref1 y ref2 son distintos" do
+            expect(@ref1 == @ref2).to eq(false)
+        end
+        it "libro y ref1 son iguales" do 
+            expect(@libro == @ref1).to eq(true)
+        end
+        it "revista y ref2 no son iguales" do
+            expect(@revista == @ref2).to eq(false)
+        end
+        it "revista es menor que revista_mayor" do
+            @revista_mayor = Revista.new("Oscar Catari",35,"A4")
+            @revista_mayor.titulo_poner("Lenguajes y Paradigmas")
+            @revista_mayor.serie_poner("Ruby")
+            @revista_mayor.editorial_poner("Santillana")
+            @revista_mayor.edicion_poner(10)
+            @revista_mayor.fecha_poner("july 7,2015")
+            @revista_mayor.isbn_poner("ISBN-10: 1234512345")
+            
+            expect(@revista < @revista_mayor).to eq(true)
+        end
+        it "libro es mayor o igual que ref_menor" do
+            @ref_menor = P6::Biblio.new("Oscar Catari")
+            @ref_menor.titulo_poner("Lenguajes y Paradigmas")
+            @ref_menor.serie_poner("Ruby")
+            @ref_menor.editorial_poner("Santillana")
+            @ref_menor.edicion_poner(3)
+            @ref_menor.fecha_poner("july 7,2015")
+            @ref_menor.isbn_poner("ISBN-10: 1234512345")
+            
+            expect(@libro >= @ref_menor).to eq(true)
+        end
+        it "libro es menor o igual que revista" do
+            expect(@libro <= @revista).to eq(true)
+        end
+        
     end
 end
