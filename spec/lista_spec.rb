@@ -103,4 +103,32 @@ describe Lista do
         end
     end
     
+    context "Incluyendo el modulo enumerable a la lista" do
+        before :each do
+            @lista = Lista.new
+            @lista.insertar([Nodo.new(7,nil),Nodo.new(10,nil),Nodo.new(5,nil)])
+        end
+        it "metodo max" do
+            expect(@lista.max).to eq(10)
+        end
+        it "metodo min" do
+            expect(@lista.min).to eq(5)
+        end
+        it "metodo sort" do
+            expect(@lista.sort).to eq([5,7,10])
+        end
+        it "metodo drop" do
+          expect(@lista.drop(1)).to eq([10,7])
+        end
+        it "metodo count" do
+          expect(@lista.count).to eq(3)
+        end
+        it "metodo collect" do
+          expect(@lista.collect{|i| i*2}).to eq([10,20,14])
+        end
+        it "metodo all" do
+          expect(@lista.all?).to eq(true)
+        end
+    end
+    
 end
