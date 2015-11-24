@@ -1,8 +1,6 @@
 # P6
 
-Lenguajes y Paradigmas de la Programacion
-Practica 6: Oscar Catari Gutierrez y Pablo Sebastian Caballero
-Practica 7: Oscar Catari Gutierrez
+Practica 9: Oscar Catari Gutierrez
 
 ## Installation
 
